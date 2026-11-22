@@ -1,5 +1,6 @@
 
 import os
+import streamlit as st
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -11,7 +12,7 @@ from vector_store import search_relevant_chunks
 env_path = Path(__file__).parent / ".env"
 load_dotenv(dotenv_path=env_path)
 
-api_key = os.getenv("GROQ_API_KEY")
+api_key = st.secrets["GROQ_API_KEY"]
 
 if not api_key:
     raise ValueError(
